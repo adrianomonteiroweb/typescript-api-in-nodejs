@@ -39,3 +39,18 @@ export const create = async (newItem: BaseItem): Promise<Item> => {
 
   return items[id];
 };
+
+export const update = async (
+  id: number,
+  itemUpdate: BaseItem
+): Promise<Item | null> => {
+  const item = await find(id);
+
+  if (!item) {
+    return null;
+  }
+
+  items[id] = { ...itemUpdate, id };
+
+  return items[id];
+};
