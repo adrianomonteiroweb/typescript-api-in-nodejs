@@ -33,8 +33,8 @@ export const create = async (newItem: BaseItem): Promise<Item> => {
   const id = new Date().valueOf();
 
   items[id] = {
-    id,
     ...newItem,
+    id,
   };
 
   return items[id];
