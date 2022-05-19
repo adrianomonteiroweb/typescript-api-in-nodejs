@@ -1,4 +1,5 @@
 export interface BaseItem {
+  id: number,
   name: string;
   price: number;
   description: string;
