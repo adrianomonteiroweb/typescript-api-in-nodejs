@@ -1,16 +1,10 @@
-import express, { Request, Response } from "express";
-import * as ItemService from "./items.service";
-import { Item } from "./item.interface";
+import express from "express";
+
+import getItemById from "../controllers/getItemById.controller";
+import getAllItems from "../controllers/getAllItems.controller";
 
 export const itemsRouter = express.Router();
 
-itemsRouter.get("/", async (_req: Request, res: Response) => {
-  try {
-    const items: Item[] = await ItemService.findAll();
+itemsRouter.get("/", getAllItems);
 
-    res.status(200).send(items);
-  } catch (error: any) {
-    res.status(500).send(error.message);
-  }
-});
-
+itemsRouter.get("/:id", getItemById);
